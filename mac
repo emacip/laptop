@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 echo "Checking for SSH key, generating one if it doesn't exist ..."
   [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
@@ -11,10 +11,10 @@ echo "Installing RVM (Ruby Version Manager) ..."
   curl -L https://get.rvm.io | bash -s stable --ruby
   echo "
 # RVM
-[[ -s '/Users/`whoami`/.rvm/scripts/rvm' ]] && source '/Users/`whoami`/.rvm/scripts/rvm'" >> ~/.zshrc
-  source ~/.zshrc
+[[ -s '/Users/`whoami`/.rvm/scripts/rvm' ]] && source '/Users/`whoami`/.rvm/scripts/rvm'" >> ~/.bash_profile
+  source ~/.bash_profile
 
-zsh < <(curl -s https://raw.github.com/thoughtbot/laptop/master/ruby)
+bash_profile < <(curl -s https://raw.github.com/redradix/laptop/master/ruby)
 
 echo "Installing Homebrew, a good OS X package manager ..."
   ruby <(curl -fsS https://raw.github.com/mxcl/homebrew/go)
@@ -23,22 +23,18 @@ echo "Installing Homebrew, a good OS X package manager ..."
 echo "Put Homebrew location earlier in PATH ..."
   echo "
 # recommended by brew doctor
-export PATH='/usr/local/bin:$PATH'" >> ~/.zshrc
-  source ~/.zshrc
+export PATH='/usr/local/bin:$PATH'" >> ~/.bash_profile
+  source ~/.bash_profile
 
-echo "Installing Postgres, a good open source relational database ..."
+echo "Installing goodies..."
   brew install postgres --no-python
-
-echo "Installing ack, a good way to search through files ..."
   brew install ack
-
-echo "Installing tmux, a good way to save project state and switch between projects ..."
-  brew install tmux
-
-echo "Installing ImageMagick, good for cropping and re-sizing images ..."
   brew install imagemagick
-
-echo "Installing QT, used by Capybara Webkit for headless Javascript integration testing ..."
   brew install qt
-
-zsh < <(curl -s https://raw.github.com/thoughtbot/laptop/master/heroku)
+  brew install git
+  brew install macvim
+  brew install node
+  brew install redis
+  brew install wget
+  brew install curl
+  brew linkapps
